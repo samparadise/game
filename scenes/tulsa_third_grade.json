@@ -1,0 +1,47 @@
+{
+ 	"context": {
+	 	"geo": "Tulsa, Oklahoma",
+		"time": "late 1970s",
+		"me": "I'm a skinny kid, tall for my age, with a buzz haircut. I'm popular with the kids at school but my friends and I are young and sometimes get bullied by the highschoolers during recess and after school. Our elementary is right next to the highschool, which is very big and very scary."
+	},
+	"people": {
+		"Mike": "Mike and I play together reasonably well but we argue and fight occasionally. I feel like Mike is the favorite kid, since he never gets in trouble like I sometimes do.",
+		"Dad": "Dad works long hours at American Airlines and is not around much during the days. He gets up super early and leaves for work, but usually gets home in time for dinner with everyone. Sometimes he has softball practice in the evening.",
+		"Mom": "Mom is pretty much always around, doing house stuff. She makes dinner, takes Mike and me places.",
+		"Andy Richardson": "Andy is my good friend from school. He and I listen to music together and talk about bands. Andy gave me a Paper Lace album, The Night Chicago Died."
+	},
+	"places": {
+		"HOME": {
+			"info": "We lived in a tiny house at 6735 E 29th Street in Tulsa and I went to school at MacArthur Elementary, which was about a mile walk from the house, through third grade.",
+			"things": {
+				"skateboard": "Skateboards are the thing, and the kids I want to be like all have expensive ones wth those polyurethane wheels that are pretty quiet and smooth even on rough roads like in the neighborhood. Mine has metal wheels and is super loud and bone-jarring, probably like one of those very first bicycles."
+			},
+			"from here": [
+				"Ask Mom to drive you over to Andy Richardson's house and she might if she's not busy. If she does, she will always pick you up and bring you back home.",
+				"Dad might come home from work early and grab you to go to softball practice with him at the Softball park"
+			],
+		"Andy Richardson's house": {
+			"info": "Andy's house is in a neighborhood like ours on the other side of Sheridan, a busy street. His dad is never around, and his mom is part-horder part-slob. There is trash all over the house and she just sits on the couch all day. I go over to Andy's sometimes and we listed to records in his room. He gave me a Paper Lace album, The Night Chicago Died."
+		},
+		"Softball park": {
+			"info": "Dad plays on a fast-pitch softball team for American Airlines. He plays short stop and his teammates call him rabbit because he's quick. Mike and I will go with him to practice sometimes, play around on the bleachers.",
+			"from here": [
+				"Dad takes us home after practice, and we always stop at Git-n-Go (convenience store) for an Icee on the way home."
+			],
+		},
+		"piano lessons": {},
+		"Mazzios": {},
+	},
+	"encounters": {
+		"distant": {
+			"me": [
+				"I'm walking to school with a couple friend from the neighborhood. We walk together, alone with no parents, to and from school. It's mostly neighborhoods. We'll stop sometimes to pick mulberries from trees and eat them, and if it has rained and there's water in the irrigation ditches along the street we'll stop and look for crawdads to catch."
+			]
+		},
+		"interactive": {
+			"me": [
+				"I'm making little pottery out of mud with a friend. Our plan is to go around the neighborhood selling these things to raise money to buy a skateboard. I don't know it yet but when my mom finds out she'll be angry and make me go back around the neighborhood returning the money."
+			]
+		}
+	}
+}

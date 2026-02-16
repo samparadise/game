@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Sam Paradise — Text Adventure UI
+   ========================================================================== */
+
+/* --- Custom Properties --- */
+:root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-input: #0f3460;
+    --text-primary: #e0e0e0;
+    --text-output: #00ff88;
+    --text-system: #ffd700;
+    --text-muted: #7a7a8e;
+    --accent-primary: #e94560;
+    --accent-glow: rgba(0, 255, 136, 0.15);
+    --border-color: #2a2a4a;
+    --font-mono: 'Space Mono', monospace;
+    --scanline-opacity: 0.03;
+    --frame-padding: 1rem;
+    --header-height: 2.5rem;
+    --input-bar-height: 3.5rem;
+}
+
+/* --- Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+/* --- CRT Scanline Overlay --- */
+.crt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, var(--scanline-opacity)),
+        rgba(0, 0, 0, var(--scanline-opacity)) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .crt-overlay {
+        animation: flicker 0.15s infinite alternate;
+    }
+}
+
+@keyframes flicker {
+    0%   { opacity: 0.97; }
+    100% { opacity: 1; }
+}
+
+/* --- Header --- */
+.game-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 var(--frame-padding);
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.game-title {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-system);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* --- Scroll Container ---
+   Fixed box between header and input bar. This is the scrollable area. */
+.game-scroll-container {
+    position: fixed;
+    top: var(--header-height);
+    bottom: var(--input-bar-height);
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    padding: var(--frame-padding);
+}
+
+/* --- Output ---
+   Inner div. min-height fills the scroll container,
+   flex pushes content to the bottom. */
+.game-output {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.game-output p {
+    margin: 0 0 0.25rem 0;
+    padding: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.game-output .msg-narration {
+    color: var(--text-output);
+}
+
+.game-output .msg-system {
+    color: var(--text-system);
+    font-weight: 700;
+}
+
+.game-output .msg-echo {
+    color: var(--text-muted);
+}
+
+.game-output .msg-error {
+    color: var(--accent-primary);
+}
+
+/* --- Input Bar --- */
+.game-input-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--input-bar-height);
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 0 var(--frame-padding);
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.game-input-bar form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.game-input-bar .prompt-char {
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+}
+
+.game-input-bar .command-input {
+    flex: 1;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    caret-color: var(--text-output);
+}
+
+.game-input-bar .command-input:focus {
+    background-color: var(--bg-input);
+    border-color: var(--text-output);
+    box-shadow: 0 0 0 0.15rem var(--accent-glow);
+    color: var(--text-primary);
+    outline: none;
+}
+
+.game-input-bar .command-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* --- Scrollbar (WebKit) --- */
+.game-scroll-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.game-scroll-container::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+.game-scroll-container::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 3px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 576px) {
+    html {
+        font-size: 14px;
+    }
+
+    :root {
+        --frame-padding: 0.75rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .game-output p {
+        max-width: 80ch;
+    }
+}
